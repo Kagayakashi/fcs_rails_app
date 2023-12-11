@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_07_155119) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_11_144703) do
+  create_table "castles", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_castles_on_user_id"
+  end
+
+  create_table "citadels", force: :cascade do |t|
+    t.string "name"
+    t.integer "level", default: 0, null: false
+    t.integer "tree_requirement", default: 0, null: false
+    t.integer "stone_requirement", default: 0, null: false
+    t.integer "iron_requirement", default: 0, null: false
+    t.integer "food_requirement", default: 0, null: false
+    t.integer "build_time", default: 0, null: false
+    t.integer "castle_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "building_in_progress", default: false
+    t.index ["castle_id"], name: "index_citadels_on_castle_id"
+  end
+
   create_table "races", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -31,4 +54,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_07_155119) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "castles", "users"
+  add_foreign_key "citadels", "castles"
 end

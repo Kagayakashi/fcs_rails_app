@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  level: 1
+  tree_requirement: 1
+  stone_requirement: 1
+  iron_requirement: 1
+  food_requirement: 1
+  build_time: 1
+  castle: one
+
+two:
+  name: MyString
+  level: 1
+  tree_requirement: 1
+  stone_requirement: 1
+  iron_requirement: 1
+  food_requirement: 1
+  build_time: 1
+  castle: two
