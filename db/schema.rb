@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_11_144158) do
     t.integer "food_requirement", default: 0, null: false
     t.integer "time_requirement", default: 0, null: false
     t.integer "build_time", default: 0, null: false
-    t.boolean "building_in_progress", default: false, null: false
+    t.boolean "is_under_construction", default: false, null: false
     t.integer "castle_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

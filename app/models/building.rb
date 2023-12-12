@@ -16,5 +16,5 @@ class Building < ApplicationRecord
   validates :time_requirement, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   validates :build_time, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :building_in_progress, inclusion: { in: [true, false] }
+  validates :is_under_construction, inclusion: { in: [true, false] }
 end

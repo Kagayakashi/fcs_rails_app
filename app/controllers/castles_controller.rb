@@ -1,5 +1,5 @@
 class CastlesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :show]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_castle_not_found
 
   def index

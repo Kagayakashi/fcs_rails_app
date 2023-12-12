@@ -1,10 +1,10 @@
 module CastlesHelper
-  def button_for_build
-    content_tag(:button, 'Build', class: 'build-button')
+  def button_for_build(building)
+    button_to('Build', build_building_path(building), method: :post, class: 'build-button')
   end
 
-  def button_for_upgrade
-    content_tag(:button, 'Upgrade', class: 'upgrade-button')
+  def button_for_upgrade(building)
+    button_to('Upgrade', upgrade_building_path(building), method: :post, class: 'upgrade-button')
   end
 
   def seconds_to_time(seconds)

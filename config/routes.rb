@@ -11,4 +11,11 @@ Rails.application.routes.draw do
   root 'castles#index'
 
   resources :castles, only: [:index, :show]
+
+  resources :buildings do
+    member do
+      post 'build'
+      post 'upgrade'
+    end
+  end
 end

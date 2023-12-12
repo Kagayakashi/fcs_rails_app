@@ -2,8 +2,8 @@
 
 <div class="actions">
   <% if building.level.zero? %>
-    <%= button_for_build %>
+    <%= button_for_build(building) %>
   <% else %>
-    <%= button_for_upgrade %>
+    <%= button_for_upgrade(building) %>
   <% end %>
 </div>
