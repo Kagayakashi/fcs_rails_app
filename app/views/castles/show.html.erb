@@ -1,20 +1,20 @@
 <!-- app/views/castles/index.html.erb -->
+<div class="bg-slate-100">
+  <h1><%= @castle.name %></h1>
 
-<h1><%= @castle.name %></h1>
+  <% if @castle.user.id.equal? current_user.id %>
+  <!-- My castle -->
+    <h2>Buildings</h2>
+    <div class="divide-y divide-solid divide-slate-300">
+      <% @castle.ordered_buildings.each do |building| %>
+        <%= render partial: 'building', locals: { building: building } %>
+      <% end %>
+    </div>
 
-<% if @castle.user.id.equal? current_user.id %>
- <!-- My castle -->
-  <h2>Buildings</h2>
-  <div class="buildings">
-
-    <% @castle.ordered_buildings.each do |building| %>
-      <%= render partial: 'building', locals: { building: building } %>
-    <% end %>
-  </div>
-
-  <div>
-    <p><%= link_to 'Castles', castles_path %></p>
-  </div>
-<% else %>
-  <!-- Not my castle -->
-<% end %>
+    <div>
+      <p><%= link_to 'Castles', castles_path %></p>
+    </div>
+  <% else %>
+    <!-- Not my castle -->
+  <% end %>
+</div>

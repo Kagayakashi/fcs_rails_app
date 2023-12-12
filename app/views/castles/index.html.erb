@@ -1,9 +1,8 @@
 <!-- app/views/castles/index.html.erb -->
+<div class="bg-slate-100">
+  <h1>My castles</h1>
 
-<h1>My castles</h1>
-
-<h2>Castles</h2>
-<div class="castles">
+  <h2>Castles</h2>
   <% @castles.each do |castle| %>
     <div class="castle">
       <h3><%= link_to castle.name, castle %></h3>

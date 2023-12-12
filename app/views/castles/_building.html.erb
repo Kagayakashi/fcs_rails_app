@@ -1,25 +1,17 @@
 <!-- app/views/castles/_building.html.erb -->
 <% @building_type = BuildingType.find_by_id(building.type_id) %>
 
-<div id="<%= building.type_id %>" class="building">
-  <div class="wrapper-row justify-space-between">
-    <div class="details wrapper-column">
-      <div class="description">
-        <%= image_tag('building.png', alt: @building_type.name, width: '150px') %>
-        <h3><%= @building_type.name %></h3>
-        <p><%= @building_type.details %></p>
-      </div>
-
+<div id="<%= building.type_id %>" class="sm:py-2">
+  <div class="flex flex-row">
+    <div class="max-w-full">
+      <%= image_tag('castle.png', alt: @building_type.name, class: 'sm:w-14 sm:h-14') %>
+      <p class="font-bold text-sm"><%= @building_type.name %></p>
+      <p class="text-xs"><%= @building_type.details %></p>
       <%= render partial: 'action_buttons', locals: { building: building } %>
-    
     </div>
-    <div class="requirements">
-      
+    <div class="sm:min-w-[80px]">
       <%= render partial: 'req_resources', locals: { building: building } %>
-
-      <div class="req-time">
-        <p><%= seconds_to_time(building.time_requirement.to_i) %></p>
-      </div>
+      <p><%= seconds_to_time(building.time_requirement.to_i) %></p>
     </div>
   </div>
 </div>
