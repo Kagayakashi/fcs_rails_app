@@ -5,6 +5,7 @@ class User < ApplicationRecord
   
   belongs_to :race
   has_many :castles, dependent: :destroy
+  has_one :main_castle, -> { where(is_main: true) }, class_name: 'Castle'
 
   # Use :name as the authentication key
   validates :name, presence: true, uniqueness: { case_sensitive: false }

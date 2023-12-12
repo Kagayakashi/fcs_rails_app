@@ -10,32 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_11_144703) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_11_144158) do
+  create_table "buildings", force: :cascade do |t|
+    t.integer "order", null: false
+    t.integer "type_id", null: false
+    t.integer "level", default: 0, null: false
+    t.integer "wood_requirement", default: 0, null: false
+    t.integer "stone_requirement", default: 0, null: false
+    t.integer "iron_requirement", default: 0, null: false
+    t.integer "food_requirement", default: 0, null: false
+    t.integer "time_requirement", default: 0, null: false
+    t.integer "build_time", default: 0, null: false
+    t.boolean "building_in_progress", default: false, null: false
+    t.integer "castle_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["castle_id"], name: "index_buildings_on_castle_id"
+  end
+
   create_table "castles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.integer "x", null: false
+    t.integer "y", null: false
+    t.boolean "is_main", default: false, null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_castles_on_user_id"
-  end
-
-  create_table "citadels", force: :cascade do |t|
-    t.string "name"
-    t.integer "level", default: 0, null: false
-    t.integer "tree_requirement", default: 0, null: false
-    t.integer "stone_requirement", default: 0, null: false
-    t.integer "iron_requirement", default: 0, null: false
-    t.integer "food_requirement", default: 0, null: false
-    t.integer "build_time", default: 0, null: false
-    t.integer "castle_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "building_in_progress", default: false
-    t.index ["castle_id"], name: "index_citadels_on_castle_id"
+    t.index ["x", "y"], name: "index_castles_on_x_and_y", unique: true
   end
 
   create_table "races", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,12 +54,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_11_144703) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.integer "race_id"
+    t.string "name", null: false
+    t.integer "race_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "buildings", "castles"
   add_foreign_key "castles", "users"
-  add_foreign_key "citadels", "castles"
 end
