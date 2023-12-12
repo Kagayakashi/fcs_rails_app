@@ -3,8 +3,9 @@
 
 <div id="<%= building.type_id %>" class="building">
   <div class="wrapper-row justify-space-between">
-    <div class="wrapper-column">
-      <div class="details">
+    <div class="details wrapper-column">
+      <div class="description">
+        <%= image_tag('building.png', alt: @building_type.name, width: '150px') %>
         <h3><%= @building_type.name %></h3>
         <p><%= @building_type.details %></p>
       </div>

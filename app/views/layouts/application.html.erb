@@ -5,32 +5,68 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <div class="container">
+    <div class="sm:container md:mx-auto md:px-4">
       <% if flash.any? %>
-        <div>
-          <% if flash.notice.present? %>
+        <% if flash.notice.present? %>
+          <div class="bg-blue-200 py-1 px-1 flex flex-row items-center">
+            <%= image_tag('notice.png', alt: 'notice', class: 'w-5 h-5 mr-1') %>
             <p><%= flash.notice %></p>
-          <% end %>
+          </div>
+        <% end %>
 
-          <% if flash.alert.present? %>
+        <% if flash.alert.present? %>
+          <div class="bg-orange-200 py-1 px-1 flex flex-row items-center">
+            <%= image_tag('alert.png', alt: 'alert', class: 'w-5 h-5 mr-1') %>
             <p><%= flash.alert %></p>
-          <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <div class="bg-slate-100">
+          <div class="grid grid-cols-4 place-content-around">
+            <div class="sm:mx-1 col-span-2 flex flex-row items-center">
+              <%= image_tag('player.png', alt: 'player', class: 'w-4 h-4 mr-1') %>
+              <%= current_user.name %>
+            </div>
+            <div class="sm:mx-auto flex flex-row items-center">
+              <%= image_tag('ruby.png', alt: 'ruby', class: 'w-4 h-4 mr-1') %>
+              <p>0</p>
+            </div>
+            <div class="sm:mx-auto flex flex-row items-center">
+              <%= image_tag('exit.png', alt: 'exit', class: 'w-4 h-4 mr-1') %>
+              <%= link_to 'Exit', destroy_user_session_path, data: { turbo_method: :delete } %>
+            </div>
+            <div class="sm:mx-auto flex flex-row items-center">
+              <%= image_tag('wood.png', alt: 'wood', class: 'w-4 h-4 mr-1') %>
+              <p>1234</p>
+            </div>
+            <div class="sm:mx-auto flex flex-row items-center">
+              <%= image_tag('stone.png', alt: 'stone', class: 'w-4 h-4 mr-1') %>
+              <p>53422</p>
+            </div>
+            <div class="sm:mx-auto flex flex-row items-center">
+              <%= image_tag('iron.png', alt: 'iron', class: 'w-4 h-4 mr-1') %>
+              <p>12563</p>
+            </div>
+            <div class="sm:mx-auto flex flex-row items-center">
+              <%= image_tag('wheat.png', alt: 'wheat', class: 'w-4 h-4 mr-1') %>
+              <p>67</p>
+            </div>
+          </div>
+
+          <div>
+
+          </div>
         </div>
       <% end %>
-      <div>
-        <% if user_signed_in? %>
-          <p>Welcome, <%= current_user.name %>!</p>
-          <p><%= link_to 'exit', destroy_user_session_path, data: { turbo_method: :delete } %></p>
-        <% else %>
-          <p>Feel free to <%= link_to 'sign up', new_user_registration_path %> or <%= link_to 'sign in', new_user_session_path %>.</p>
-        <% end %>
-      </div>
 
       <%= yield %>
     </div>
