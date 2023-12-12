@@ -1,0 +1,31 @@
+.building {
+  border-bottom: 1px solid #a3a3a3;
+}
+
+.building:last-child {
+  border: none;
+}
+
+.wrapper-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.wrapper-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions button {
+  width: 80px;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.req-resources p {
+  margin: 2px 0px 2px 0px;
+}

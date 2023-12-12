@@ -1,0 +1,61 @@
+<!-- app/views/castles/index.html.erb -->
+
+<h1><%= @castle.name %></h1>
+
+<% if @castle.user.id.equal? current_user.id %>
+ <!-- My castle -->
+  <h2>Buildings</h2>
+  <div class="buildings">
+
+    <% @castle.ordered_buildings.each do |building| %>
+      <div id="<%= building.type_id %>" class="building">
+        <div class="wrapper-row justify-space-between">
+          <div class="wrapper-column">
+            <div class="details">
+              <h3>Building <%= building.type_id %></h3>
+              <p>Building description <%= building.type_id %></p>
+            </div>
+            <div class="actions">
+              <% if building.level.zero? %>
+                <button>Build</button>
+              <% else %>
+                <button>Upgrade</button>
+              <% end %>
+            </div>
+          </div>
+          <div class="requirements">
+            <div class="req-resources">
+              <table>
+                <tr>
+                  <td><p>F</p></td>
+                  <td><p><%= building.food_requirement %></p></td>
+                </tr>
+                <tr>
+                  <td><p>W</p></td>
+                  <td><p><%= building.wood_requirement %></p></td>
+                </tr>
+                <tr>
+                  <td><p>S</p></td>
+                  <td><p><%= building.stone_requirement %></p></td>
+                </tr>
+                <tr>
+                  <td><p>I</p></td>
+                  <td><p><%= building.iron_requirement %></p></td>
+                </tr>
+              </table>
+            </div>
+            <div class="req-time">
+              <p><%= building.time_requirement %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <p><%= link_to 'Castles', castles_path %></p>
+  </div>
+<% else %>
+  <!-- Other player castle -->
+<% end %>

@@ -1,18 +1,12 @@
 <!-- app/views/castles/index.html.erb -->
 
-<h1>Welcome to the Castle!</h1>
+<h1>My castles</h1>
 
-<div class="buildings">
-  <div class="building">
-    <div></div>
-    <div></div>
-  </div>
+<h2>Castles</h2>
+<div class="castles">
+  <% @castles.each do |castle| %>
+    <div class="castle">
+      <h3><%= link_to castle.name, castle %></h3>
+    </div>
+  <% end %>
 </div>
-
-<% if user_signed_in? %>
-  <p>Welcome, <%= current_user.name %>!</p>
-
-  <p><%= link_to 'exit', destroy_user_session_path, data: { turbo_method: :delete } %></p>
-<% else %>
-  <p>Feel free to <%= link_to 'sign up', new_user_registration_path %> or <%= link_to 'sign in', new_user_session_path %>.</p>
-<% end %>
