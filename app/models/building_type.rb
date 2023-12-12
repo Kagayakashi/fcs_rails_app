@@ -2,6 +2,7 @@
 
 class BuildingType
   TYPES = {
+    unknown: { id: 0, name: 'Unknown', details: 'Unknown' },
     citadel: { id: 1, name: 'Citadel', details: 'Unlocks new possibilities' },
     barracks: { id: 2, name: 'Barracks', details: 'Training new troops' },
     militia_hq: { id: 3, name: 'Militia Headquarters', details: 'Studying and preparing new combat tactics' },
@@ -33,5 +34,10 @@ class BuildingType
 
   def self.find_by_name(name)
     new(TYPES[name.to_sym][:id])
+  end
+
+  def self.find_by_id(id)
+    type = TYPES.find { |_name, data| data[:id] == id.to_i }
+    new(type&.first || :unknown)
   end
 end

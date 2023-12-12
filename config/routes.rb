@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :buildings do
     member do
       post 'build'
-      post 'upgrade'
+      post 'cancel'
+      post 'skip'
     end
   end
 end

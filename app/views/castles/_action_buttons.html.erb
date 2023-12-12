@@ -1,9 +1,10 @@
 <!-- app/views/castles/_action_buttons.html.erb -->
 
-<div class="actions">
-  <% if building.level.zero? %>
-    <%= button_for_build(building) %>
+<div class="actions wrapper-row">
+  <% if building.is_under_construction %>
+    <%= button_for_skip(building) %>
+    <%= button_for_cancel(building) %>
   <% else %>
-    <%= button_for_upgrade(building) %>
+    <%= button_for_build(building) %>
   <% end %>
 </div>

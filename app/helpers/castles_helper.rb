@@ -1,10 +1,14 @@
 module CastlesHelper
   def button_for_build(building)
-    button_to('Build', build_building_path(building), method: :post, class: 'build-button')
+    button_to(building.level.zero? ? 'Build' : 'Upgrade', build_building_path(building), method: :post, class: 'build-button')
   end
 
-  def button_for_upgrade(building)
-    button_to('Upgrade', upgrade_building_path(building), method: :post, class: 'upgrade-button')
+  def button_for_cancel(building)
+    button_to('Cancel', cancel_building_path(building), method: :post, class: 'cancel-button')
+  end
+
+  def button_for_skip(building)
+    button_to('Skip', skip_building_path(building), method: :post, class: 'skip-button')
   end
 
   def seconds_to_time(seconds)

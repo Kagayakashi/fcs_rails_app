@@ -1,11 +1,12 @@
 <!-- app/views/castles/_building.html.erb -->
+<% @building_type = BuildingType.find_by_id(building.type_id) %>
 
 <div id="<%= building.type_id %>" class="building">
   <div class="wrapper-row justify-space-between">
     <div class="wrapper-column">
       <div class="details">
-        <h3>Building <%= building.type_id %></h3>
-        <p>Building description <%= building.type_id %></p>
+        <h3><%= @building_type.name %></h3>
+        <p><%= @building_type.details %></p>
       </div>
 
       <%= render partial: 'action_buttons', locals: { building: building } %>
