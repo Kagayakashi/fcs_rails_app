@@ -1,0 +1,23 @@
+<!-- app/views/castles/_building.html.erb -->
+
+<div id="<%= building.type_id %>" class="building">
+  <div class="wrapper-row justify-space-between">
+    <div class="wrapper-column">
+      <div class="details">
+        <h3>Building <%= building.type_id %></h3>
+        <p>Building description <%= building.type_id %></p>
+      </div>
+
+      <%= render partial: 'action_buttons', locals: { building: building } %>
+    
+    </div>
+    <div class="requirements">
+      
+      <%= render partial: 'req_resources', locals: { building: building } %>
+
+      <div class="req-time">
+        <p><%= seconds_to_time(building.time_requirement.to_i) %></p>
+      </div>
+    </div>
+  </div>
+</div>
