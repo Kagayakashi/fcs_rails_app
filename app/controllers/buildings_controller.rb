@@ -8,21 +8,16 @@ class BuildingsController < ApplicationController
 
   def build
     if @building.level.zero?
-      level_up!
+      @building.level_up!
       redirect_to castle_path(@building.castle), notice: 'Construction of the building has been finished'
-      return
+    else
+      @building.update(is_under_construction: true, build_time: 180)
+      redirect_to castle_path(@building.castle), notice: 'Construction of the building has begun'
     end
-
-    @building.is_under_construction = true
-    @building.build_time = 180
-    @building.save
-    redirect_to castle_path(@building.castle), notice: 'Construction of the building has begun'
   end
 
   def cancel
-    @building.is_under_construction = false
-    @building.build_time = 0
-    @building.save
+    @building.update(is_under_construction: false, build_time: 0)
     redirect_to castle_path(@building.castle), notice: 'Construction of the building has been canceled'
   end
 
