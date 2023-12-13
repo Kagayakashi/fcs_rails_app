@@ -21,10 +21,10 @@ class Castle < ApplicationRecord
   validates :user, presence: true
   validates :x, presence: true
   validates :y, presence: true
-  validates :food, presence: true
-  validates :wood, presence: true
-  validates :stone, presence: true
-  validates :iron, presence: true
+  validates :food, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 10000 }
+  validates :wood, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 10000 }
+  validates :stone, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 10000 }
+  validates :iron, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 10000 }
   validates :is_main, inclusion: { in: [true, false] }
 
   def ordered_buildings
