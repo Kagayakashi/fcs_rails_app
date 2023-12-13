@@ -17,4 +17,30 @@ class Building < ApplicationRecord
 
   validates :build_time, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :is_under_construction, inclusion: { in: [true, false] }
+
+  def level_up!
+    return if self.level.eq? 10
+
+    self.level += 1
+    self.food_requirement += 1000
+    self.wood_requirement += 1000
+    self.stone_requirement += 1000
+    self.iron_requirement += 1000
+    self.is_under_construction = false
+    self.build_time = 0
+    save
+  end
+
+  def level_down!
+    return if self.level.zero?
+
+    self.level -= 1
+    self.food_requirement -= 1000
+    self.wood_requirement -= 1000
+    self.stone_requirement -= 1000
+    self.iron_requirement -= 1000
+    self.is_under_construction = false
+    self.build_time = 0
+    save
+  end
 end

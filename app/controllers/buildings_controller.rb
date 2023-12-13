@@ -7,6 +7,12 @@ class BuildingsController < ApplicationController
   before_action :building_is_underconstruction, only: [:cancel]
 
   def build
+    if @building.level.zero?
+      level_up!
+      redirect_to castle_path(@building.castle), notice: 'Construction of the building has been finished'
+      return
+    end
+
     @building.is_under_construction = true
     @building.build_time = 180
     @building.save
@@ -21,6 +27,15 @@ class BuildingsController < ApplicationController
   end
 
   def skip
+    level_up!
+    redirect_to castle_path(@building.castle), notice: 'Construction of the building has been finished'
+  end
+
+  private
+
+  def level_up!
+    return if @building.level === 10
+
     @building.level += 1
     @building.food_requirement += 1000
     @building.wood_requirement += 1000
@@ -29,10 +44,20 @@ class BuildingsController < ApplicationController
     @building.is_under_construction = false
     @building.build_time = 0
     @building.save
-    redirect_to castle_path(@building.castle), notice: 'Construction of the building has been finished'
   end
 
-  private
+  def level_down!
+    return if @building.level.zero?
+
+    @building.level -= 1
+    @building.food_requirement -= 1000
+    @building.wood_requirement -= 1000
+    @building.stone_requirement -= 1000
+    @building.iron_requirement -= 1000
+    @building.is_under_construction = false
+    @building.build_time = 0
+    @building.save
+  end
 
   def find_building
     @building = Building.find(params[:id])
