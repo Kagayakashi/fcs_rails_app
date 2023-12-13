@@ -61,15 +61,87 @@ primary_castle = user.castles.create(
   y: 1,
   is_main: true,
   buildings_attributes: [
-    { order: 1, type_id: citadel.to_i },
-    { order: 2, type_id: barracks.to_i },
-    { order: 3, type_id: militia_hq.to_i },
-    { order: 4, type_id: farm.to_i },
-    { order: 5, type_id: sawmill.to_i },
-    { order: 6, type_id: stone_mine.to_i },
-    { order: 7, type_id: iron_mine.to_i },
-    { order: 8, type_id: diplomatic_center.to_i },
-    { order: 9, type_id: defensive_wall.to_i },
+    {
+      order: 1,
+      type_id: citadel.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 2,
+      type_id: barracks.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 3,
+      type_id: militia_hq.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 4,
+      type_id: farm.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 5,
+      type_id: sawmill.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 6,
+      type_id: stone_mine.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 7,
+      type_id: iron_mine.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 8,
+      type_id: diplomatic_center.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 9,
+      type_id: defensive_wall.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
   ]
 )
 puts "Castle created: #{primary_castle.name}, X:#{sprintf('%03d', primary_castle.x)} Y:#{sprintf('%03d', primary_castle.y)}"
@@ -80,15 +152,87 @@ secondary_castle = user.castles.create(
   y: 10,
   is_main: false,
   buildings_attributes: [
-    { order: 1, type_id: citadel.to_i },
-    { order: 2, type_id: barracks.to_i },
-    { order: 3, type_id: militia_hq.to_i },
-    { order: 4, type_id: farm.to_i },
-    { order: 5, type_id: sawmill.to_i },
-    { order: 6, type_id: stone_mine.to_i },
-    { order: 7, type_id: iron_mine.to_i },
-    { order: 8, type_id: diplomatic_center.to_i },
-    { order: 9, type_id: defensive_wall.to_i },
+    {
+      order: 1,
+      type_id: citadel.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 2,
+      type_id: barracks.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 3,
+      type_id: militia_hq.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 4,
+      type_id: farm.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 5,
+      type_id: sawmill.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 6,
+      type_id: stone_mine.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 7,
+      type_id: iron_mine.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 8,
+      type_id: diplomatic_center.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
+    {
+      order: 9,
+      type_id: defensive_wall.to_i,
+      food_requirement: 100,
+      wood_requirement: 100,
+      stone_requirement: 100,
+      iron_requirement: 100,
+      time_requirement: 60
+    },
   ]
 )
 puts "Castle created: #{secondary_castle.name}, X:#{sprintf('%03d', secondary_castle.x)} Y:#{sprintf('%03d', secondary_castle.y)}"

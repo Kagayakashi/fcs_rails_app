@@ -18,5 +18,8 @@ Rails.application.routes.draw do
       post 'cancel'
       post 'skip'
     end
+    collection do
+      get 'remaining_time'
+    end
   end
 end

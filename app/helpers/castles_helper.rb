@@ -20,15 +20,16 @@ module CastlesHelper
   def seconds_to_time(seconds)
     return '0s' if seconds.nil? || seconds.zero?
 
-    days, hours, minutes, remaining_seconds = seconds.divmod(24 * 3600)
-    hours, minutes, seconds = hours.divmod(3600), minutes.divmod(60), remaining_seconds.divmod(60)
-  
+    days, remaining_seconds = seconds.divmod(24 * 3600)
+    hours, remaining_seconds = remaining_seconds.divmod(3600) unless remaining_seconds.nil?
+    minutes, remaining_seconds = remaining_seconds.divmod(60) unless remaining_seconds.nil?
+
     time_components = []
-    time_components << "#{days}d" if days > 0
-    time_components << "#{hours}h" if hours > 0
-    time_components << "#{minutes}m" if minutes > 0
-    time_components << "#{seconds}s" if seconds > 0
-  
+    time_components << "#{days}d" if days.to_i > 0
+    time_components << "#{hours}h" if hours.to_i > 0
+    time_components << "#{minutes}m" if minutes.to_i > 0
+    time_components << "#{remaining_seconds}s" if remaining_seconds.to_i > 0
+
     time_components.join(', ')
   end
 end

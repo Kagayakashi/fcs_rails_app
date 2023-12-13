@@ -8,6 +8,20 @@ Things you may want to cover:
 * Ruby version
 
 * System dependencies
+Ubuntu
+sudo apt update
+sudo apt install redis-server
+
+MacOS
+brew install redis
+
+Windows
+https://redis.io/download
+
+Check if started
+`sudo systemctl status redis`
+
+`sudo systemctl start redis`
 
 * Configuration
 
