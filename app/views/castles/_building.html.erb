@@ -3,9 +3,14 @@
 
 <div id="<%= building.type_id %>" class="sm:py-2">
   <div class="flex flex-row">
-    <div class="max-w-full">
-      <%= image_tag('castle.png', alt: @building_type.name, class: 'sm:w-14 sm:h-14') %>
-      <p class="font-bold text-sm"><%= @building_type.name %></p>
+    <div class="sm:min-w-[160px] mx-1">
+      <%= image_tag('castle.png', alt: @building_type.name, class: 'sm:w-14 sm:h-14 flex') %>
+      <p class="font-bold text-sm">
+        <%= @building_type.name %>
+        <% unless building.level.zero? %>
+          <span>[L.<%= building.level %>]</span>
+        <% end %>
+      </p>
       <p class="text-xs"><%= @building_type.details %></p>
       <%= render partial: 'action_buttons', locals: { building: building } %>
     </div>
