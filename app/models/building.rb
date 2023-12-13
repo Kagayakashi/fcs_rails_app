@@ -19,7 +19,7 @@ class Building < ApplicationRecord
   validates :is_under_construction, inclusion: { in: [true, false] }
 
   def level_up!
-    return if self.level.eq? 10
+    return if self.level.eql? 10
 
     self.level += 1
     self.food_requirement += 1000
