@@ -21,6 +21,10 @@ class Castle < ApplicationRecord
   validates :user, presence: true
   validates :x, presence: true
   validates :y, presence: true
+  validates :food, presence: true
+  validates :wood, presence: true
+  validates :stone, presence: true
+  validates :iron, presence: true
   validates :is_main, inclusion: { in: [true, false] }
 
   def ordered_buildings

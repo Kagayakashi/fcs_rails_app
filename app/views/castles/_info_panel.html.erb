@@ -15,19 +15,19 @@
       </div>
       <div title="Wood" class="sm:mx-auto flex flex-row items-center">
         <%= image_tag('wood.png', alt: 'wood', class: 'w-4 h-4 mr-1') %>
-        <p>1234</p>
+        <p><%= @castle.wood %></p>
       </div>
       <div title="Stone" class="sm:mx-auto flex flex-row items-center">
         <%= image_tag('stone.png', alt: 'stone', class: 'w-4 h-4 mr-1') %>
-        <p>53422</p>
+        <p><%= @castle.stone %></p>
       </div>
       <div title="Iron" class="sm:mx-auto flex flex-row items-center">
         <%= image_tag('iron.png', alt: 'iron', class: 'w-4 h-4 mr-1') %>
-        <p>12563</p>
+        <p><%= @castle.iron %></p>
       </div>
       <div title="Food" class="sm:mx-auto flex flex-row items-center">
         <%= image_tag('wheat.png', alt: 'wheat', class: 'w-4 h-4 mr-1') %>
-        <p>67</p>
+        <p><%= @castle.food %></p>
       </div>
     </div>
   </div>

@@ -32,6 +32,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_11_144158) do
     t.string "name", null: false
     t.integer "x", null: false
     t.integer "y", null: false
+    t.integer "food", default: 500, null: false
+    t.integer "wood", default: 500, null: false
+    t.integer "stone", default: 500, null: false
+    t.integer "iron", default: 500, null: false
     t.boolean "is_main", default: false, null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
