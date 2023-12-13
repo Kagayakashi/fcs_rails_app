@@ -1,12 +1,17 @@
 <%= render partial: 'info_panel' %>
 
 <div class="bg-slate-100">
-  <h1><%= @castle.name %></h1>
+  <div class="flex justify-center py-1">
+    <h1 class="font-bold text-sm"><%= @castle.name %></h1>
+  </div>
 
   <% if @castle.user.id.equal? current_user.id %>
   <!-- My castle -->
-    <h2>Buildings</h2>
     <div class="divide-y divide-solid divide-slate-300">
+      <div class="flex justify-center bg-slate-200 py-1">
+        <h2 class="font-bold text-xs">Buildings</h2>
+      </div>
+
       <% @castle.ordered_buildings.each do |building| %>
         <%= render partial: 'building', locals: { building: building } %>
       <% end %>
