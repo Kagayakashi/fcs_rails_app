@@ -11,6 +11,9 @@
 /.env*
 !/.env*.erb
 
+# Ignore temp redis database files
+/dump.rdb
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
