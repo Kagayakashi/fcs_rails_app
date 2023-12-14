@@ -6,31 +6,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <div class="sm:container md:mx-auto md:px-4">
-      <% if flash.any? %>
-        <% if flash.notice.present? %>
-          <div class="bg-blue-200 py-1 px-1 flex flex-row items-center">
-            <%= image_tag('notice.png', alt: 'notice', class: 'w-5 h-5 mr-1') %>
-            <p><%= flash.notice %></p>
-          </div>
-        <% end %>
-
-        <% if flash.alert.present? %>
-          <div class="bg-orange-200 py-1 px-1 flex flex-row items-center">
-            <%= image_tag('alert.png', alt: 'alert', class: 'w-5 h-5 mr-1') %>
-            <p><%= flash.alert %></p>
-          </div>
-        <% end %>
-      <% end %>
-
+      <%= render partial: 'layouts/flash' %>
+      <%= render partial: 'layouts/header' %>
       <%= yield %>
-
+      <%= render partial: 'layouts/footer' %>
     </div>
   </body>
 </html>

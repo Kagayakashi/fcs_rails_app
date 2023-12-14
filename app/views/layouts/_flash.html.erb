@@ -1,0 +1,15 @@
+<% if flash.any? %>
+  <% if flash.notice.present? %>
+    <div class="bg-blue-200 py-1 px-1 flex flex-row items-center border-solid border-2 border-blue-300">
+      <%= image_tag('notice.png', alt: 'notice', class: 'w-5 h-5 mr-1') %>
+      <p class="text-sm"><%= flash.notice %></p>
+    </div>
+  <% end %>
+
+  <% if flash.alert.present? %>
+    <div class="bg-orange-200 py-1 px-1 flex flex-row items-center">
+      <%= image_tag('alert.png', alt: 'alert', class: 'w-5 h-5 mr-1') %>
+      <p><%= flash.alert %></p>
+    </div>
+  <% end %>
+<% end %>

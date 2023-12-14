@@ -1,18 +1,9 @@
 <% if @castle.user.id.equal? current_user.id %>
   <div class="bg-slate-200 border border-slate-300">
+    <div class="flex justify-center py-1">
+      <h1 class="font-bold text-sm"><%= @castle.name %></h1>
+    </div>
     <div class="grid grid-cols-4 place-content-around">
-      <div class="sm:mx-1 col-span-2 flex flex-row items-center">
-        <%= image_tag('player.png', alt: 'player', class: 'w-4 h-4 mr-1') %>
-        <%= current_user.name %>
-      </div>
-      <div title="Ruby" class="sm:mx-auto flex flex-row items-center">
-        <%= image_tag('ruby.png', alt: 'ruby', class: 'w-4 h-4 mr-1') %>
-        <p>0</p>
-      </div>
-      <div title="Exit" class="sm:mx-auto flex flex-row items-center">
-        <%= image_tag('exit.png', alt: 'exit', class: 'w-4 h-4 mr-1') %>
-        <%= link_to 'Exit', destroy_user_session_path, data: { turbo_method: :delete } %>
-      </div>
       <div title="Wood" class="sm:mx-auto flex flex-row items-center">
         <%= image_tag('wood.png', alt: 'wood', class: 'w-4 h-4 mr-1') %>
         <p><%= @castle.wood %></p>
