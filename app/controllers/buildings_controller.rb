@@ -9,12 +9,24 @@ class BuildingsController < ApplicationController
 
   def build
     @building.update(is_under_construction: true, build_time: @building.time_requirement)
+    castle = @building.castle;
+    castle.food -= @building.food_requirement
+    castle.wood -= @building.wood_requirement
+    castle.stone -= @building.stone_requirement
+    castle.iron -= @building.iron_requirement
+    castle.save
     BuildingConstructionJob.perform_async(@building.id, current_user.id)
     redirect_to castle_path(@building.castle), notice: 'Construction of the building has begun'
   end
 
   def cancel
     @building.update(is_under_construction: false, build_time: 0)
+    castle = @building.castle;
+    castle.food += @building.food_requirement
+    castle.wood += @building.wood_requirement
+    castle.stone += @building.stone_requirement
+    castle.iron += @building.iron_requirement
+    castle.save
     redirect_to castle_path(@building.castle), notice: 'Construction of the building has been canceled'
   end
 

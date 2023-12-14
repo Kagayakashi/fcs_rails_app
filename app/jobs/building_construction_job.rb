@@ -14,6 +14,7 @@ class BuildingConstructionJob
       end
 
       building.update(is_under_construction: false, build_time: 0)
+      building.level_up!
       
       BuildingConstructionChannel.broadcast_to(user, { message: 'Building construction completed' })
     rescue StandardError => e
