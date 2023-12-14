@@ -22,4 +22,6 @@ Rails.application.routes.draw do
       get 'remaining_time'
     end
   end
+
+  mount ActionCable.server => '/cable'
 end

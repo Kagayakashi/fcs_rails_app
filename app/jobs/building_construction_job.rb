@@ -1,10 +1,10 @@
-class UpdateConstructionTimeWorker
+class BuildingConstructionJob
   include Sidekiq::Worker
 
-  def perform(building_id)
+  def perform(building_id, user_id)
     begin
+      user = User.find(user_id)
       building = Building.find(building_id)
-      user_id = building.castle.user
 
       until building.build_time.zero?
         building.build_time -= 10
@@ -15,9 +15,9 @@ class UpdateConstructionTimeWorker
 
       building.update(is_under_construction: false, build_time: 0)
       
-      BuildingChannel.broadcast_to(user_id, construction_finished: true)
+      BuildingConstructionChannel.broadcast_to(user, { message: 'Building construction completed' })
     rescue StandardError => e
-        Rails.logger.error("Error in UpdateConstructionTimeWorker: #{e.message}")
+        Rails.logger.error("Error in BuildingConstructionJob: #{e.message}")
     end
   end
 end

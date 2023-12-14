@@ -20,7 +20,6 @@ class Building < ApplicationRecord
 
   before_save :set_default_requirements, if: :new_record?
   before_create :set_default_requirements
-  after_update :update_construction_worker, if: -> { saved_change_to_build_time? && is_under_construction? }
 
   def level_up!
     return if self.level.eql? 10
@@ -58,9 +57,5 @@ class Building < ApplicationRecord
     self.stone_requirement = 100
     self.iron_requirement = 100
     self.time_requirement = 60
-  end
-
-  def update_construction_worker
-    UpdateConstructionTimeWorker.perform_async(id)
   end
 end

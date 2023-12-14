@@ -9,6 +9,7 @@ class BuildingsController < ApplicationController
 
   def build
     @building.update(is_under_construction: true, build_time: @building.time_requirement)
+    BuildingConstructionJob.perform_async(@building.id, current_user.id)
     redirect_to castle_path(@building.castle), notice: 'Construction of the building has begun'
   end
 
