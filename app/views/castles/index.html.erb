@@ -1,11 +1,15 @@
-<!-- app/views/castles/index.html.erb -->
-<div class="bg-slate-100">
-  <h1>My castles</h1>
-
-  <h2>Castles</h2>
-  <% @castles.each do |castle| %>
-    <div class="castle">
-      <h3><%= link_to castle.name, castle %></h3>
+<div class="bg-slate-100 h-screen">
+  <div class="bg-slate-200 border border-slate-300">
+    <div class="flex justify-center py-1">
+      <h1 class="font-bold text-sm">My castles</h1>
     </div>
-  <% end %>
+  </div>
+
+  <div class="flex-1 overflow-y-auto divide-y divide-solid divide-slate-300">
+    <% @castles.each do |castle| %>
+      <div>
+        <%= link_to castle.name, castle %>
+      </div>
+    <% end %>
+  </div>
 </div>

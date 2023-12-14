@@ -1,11 +1,6 @@
 <% building_type = BuildingType.find_by_id(building.type_id) %>
 
-<% if building.is_under_construction %>
-<div id="<%= building.type_id %>" data-building-id="<%= building.id %>" class="sm:py-2">
-<% else %>
 <div id="<%= building.type_id %>" class="sm:py-2">
-<% end %>
-
   <div class="flex flex-row">
     <div class="sm:min-w-[160px] px-1 box-border">
       <%= image_tag('castle.png', alt: building_type.name, class: 'sm:w-14 sm:h-14 flex') %>

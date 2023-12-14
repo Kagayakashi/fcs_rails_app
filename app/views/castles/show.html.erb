@@ -13,9 +13,7 @@
       <% end %>
     </div>
 
-    <div>
-      <p><%= link_to 'Castles', castles_path %></p>
-    </div>
+    <%= render partial: 'nav' %>
   <% else %>
     <!-- Not my castle -->
   <% end %>
